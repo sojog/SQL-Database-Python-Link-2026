@@ -140,3 +140,48 @@ SELECT * FROM concediu;
 INSERT INTO concediu SET nume="Bogdan", disponibile = 20, total = 21;
 SELECT * FROM concediu;
 
+
+
+-- Creați tabelul: people
+-- id-ul de utilizator, care va crește automat cu 1 la fiecare intrare și care va fi cheia primară a tabelului
+-- first_name
+-- last_name
+
+
+CREATE TABLE people (id INT AUTO_INCREMENT,
+					first_name VARCHAR(100),
+                    last_name VARCHAR(100),
+                    username VARCHAR(100) UNIQUE,
+					PRIMARY KEY(id));
+
+INSERT INTO people SET first_name = "Alexandru", last_name = "Alexandrescu";
+SELECT * FROM people;
+
+INSERT INTO people SET first_name = "Cosmin", last_name = "Alexandrescu", username = "cuser";
+SELECT * FROM people;
+
+ALTER TABLE people ADD COLUMN intaltime INT;
+SELECT * FROM people;
+
+ALTER TABLE people ADD COLUMN gen ENUM ('masculin', 'feminin') DEFAULT 'masculin';
+SELECT * FROM people;
+
+
+INSERT INTO people SET first_name = "Florin", last_name = "Florinescu";
+SELECT * FROM people;
+
+INSERT INTO people SET first_name = "Marina", last_name = "Marinescu", gen = "feminin";
+SELECT * FROM people;
+
+USE INFORMATION_SCHEMA;
+SHOW TABLES;
+
+SELECT * FROM COLUMNS;
+SELECT * FROM COLUMNS WHERE table_name = 'people';
+
+
+SELECT DATA_TYPE FROM COLUMNS WHERE table_name = 'people';
+SELECT COLUMN_TYPE FROM COLUMNS WHERE table_name = 'people';
+
+
+
