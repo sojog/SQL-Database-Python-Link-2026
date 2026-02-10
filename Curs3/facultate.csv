@@ -1,0 +1,4 @@
+idStudent,nume,prenume,grupa,email,data_incrierii,statut
+1,Andreescu,Andrei,NULL,NULL,"2026-02-10 19:42:35",neevaluat
+2,Andreescu,Andreea,NULL,NULL,"2026-02-10 19:43:11",neevaluat
+4,Ionescu,Andrei,NULL,NULL,"2026-02-10 19:43:45",neevaluat
