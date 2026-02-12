@@ -1,0 +1,8 @@
+id,titlu,an,semestru,credite
+1,SQL,3,1,5
+2,OOP,4,1,6
+3,Blockchain,3,2,1
+4,"Machine Learning",1,1,1
+5,"R - Programming",3,2,1
+6,"HTML CSS",1,1,1
+7,"Python Fundamentals",1,NULL,NULL
