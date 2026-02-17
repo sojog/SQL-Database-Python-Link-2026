@@ -1,3 +1,48 @@
+CREATE SCHEMA IF NOT EXISTS `sport` DEFAULT CHARACTER SET utf8mb3 ;
+
+USE `sport` ;
+
+-- -----------------------------------------------------
+-- Table `sport`.`Echipa`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sport`.`Echipa` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nume` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sport`.`Jucator`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sport`.`Jucator` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nume` VARCHAR(45) NULL,
+  `Echipa_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_Jucator_Echipa_idx` (`Echipa_id` ASC) VISIBLE,
+  CONSTRAINT `fk_Jucator_Echipa`
+    FOREIGN KEY (`Echipa_id`)
+    REFERENCES `sport`.`Echipa` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+USE `Universitate` ;
+
+-- -----------------------------------------------------
+-- Table `Universitate`.`curs`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Universitate`.`curs` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `titlu` VARCHAR(45) NULL DEFAULT NULL,
+  `an` INT NULL DEFAULT NULL,
+  `semestru` INT NULL DEFAULT NULL,
+  `credite` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 8
+DEFAULT CHARACTER SET = utf8mb3;
 
 
 USE sport;
