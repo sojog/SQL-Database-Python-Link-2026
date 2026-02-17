@@ -20,6 +20,9 @@ DROP DATABASE IF EXISTS `Universitate`;
 -- Schema Universitate
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `Universitate` DEFAULT CHARACTER SET utf8mb3 ;
+
+CREATE SCHEMA IF NOT EXISTS `sport` DEFAULT CHARACTER SET utf8mb3 ;
+
 USE `sport` ;
 
 -- -----------------------------------------------------
