@@ -127,14 +127,39 @@ select * from angajat where salariu between 3000 and 5000;
 select * from angajat where salariu > 3000 and salariu < 5000;
 
 
+-- 11 Selectați angajații care nu au manager
+select * from angajat;
+select * from angajat where manager_id IS NULL;
 
 
+-- 12. Listați angajații ai caror manager are ID-ul 1
+select * from angajat where manager_id=1;
 
+-- 13. Enumerați angajații ai căror manager este Toma Ion 
+select * from angajat;
+select * from angajat where manager_id=1;
+SELECT * FROM angajat as Salariat
+		 JOIN angajat as  Manager  ON Salariat.manager_id=Manager.id where (Manager.nume="Toma" or Manager.prenume="Ion");
 
+SELECT Salariat.nume, Salariat.prenume, Manager.nume, Manager.prenume FROM angajat as Salariat
+		 JOIN angajat as  Manager  ON Salariat.manager_id=Manager.id where (Manager.nume="Toma" or Manager.prenume="Ion");
 
+-- 14. Listati angajații care au salariu mai mare de 2500 lei si lucrează pe Backend 
+SELECT* FROM departament;
+SELECT COUNT(*) FROM angajat;
+select * from departament where nume="Backend";
+select * from angajat where salariu>2500 and departament_id=(select id from departament where nume="Backend");
 
+-- 15. Selectati angajatii ai căror manager NU este Toma Ion și care au salariu mai mare de 4000 lei 
+select count(*) from angajat where manager_id>1 or  manager_id is null;
+select count(*) from angajat;
+select * from angajat;
+select * from angajat where salariu>4000 and (manager_id>1 or  manager_id is null);
+SELECT * FROM angajat as Manager JOIN angajat as Salariat ON Salariat.manager_id=Manager.id where (Manager.nume!="Toma" or Manager.prenume!="Ion") and Salariat.salariu>4000;
 
-
+SELECT COUNT(*) FROM angajat as Manager LEFT JOIN angajat as Salariat ON Salariat.manager_id=Manager.id;
+SELECT COUNT(*) FROM angajat as Manager RIGHT JOIN angajat as Salariat ON Salariat.manager_id=Manager.id;
+SELECT * FROM angajat as Manager RIGHT JOIN angajat as Salariat ON Salariat.manager_id=Manager.id where (Manager.nume!="Toma" or Manager.prenume!="Ion" or Salariat.manager_id is null) and Salariat.salariu>4000;
 
 SELECT * FROM angajat join departament on angajat.departament_id=departament.id where departament.nume="HR";
 
