@@ -70,3 +70,73 @@ SELECT id, CONCAT(nume, ' ', prenume) AS 'Angajat' FROM angajat ORDER BY nume DE
 -- 5. Selectați numele angajaților: DESC după departament_id, ASC după salariu; 
 
 SELECT id, CONCAT(nume, ' ', prenume) AS 'Angajat', salariu, departament_id FROM angajat ORDER BY departament_id DESC, salariu ASC;
+
+
+
+-- 6. Selectați numele angajatilor care lucreaza la HR 
+
+# V1 - pe bucati
+select * from angajat;
+SELECT * FROM departament;
+select * from angajat where departament_id=5;
+
+## V2 - SELECT - merge in cazul in care exista o singura valoare returnata
+select * from angajat where departament_id=(select id from departament where nume="HR");
+
+## Aici returneaza mai multe valori si nu mai functioneaza
+# select * from angajat where departament_id=(select id from departament where nume="HR" OR nume ="IT");
+
+
+## V3 - folosind o variabila
+SELECT @variabila; # initial este NULL
+
+SET @variabila  = 20; 
+SELECT @variabila;
+
+SELECT @o_alta_variabila = 100;
+
+SELECT @o_alta_variabila;
+
+## SETAREA unei variabile poate fi facuta cu SET sau SELECT := 
+SELECT @o_alta_variabila := 100;
+SELECT @o_alta_variabila;
+
+SET @dep_HR := (SELECT id FROM departament WHERE nume="HR");
+select * from angajat where departament_id=@dep_HR ;
+
+
+## V4 - join 
+SELECT angajat.nume,angajat.prenume,departament.nume 
+	FROM angajat JOIN departament 
+    ON angajat.departament_id=departament.id 
+    WHERE departament.nume="HR";
+
+-- 7. Listati angajatii care nu lucreaza la HR 
+select * from angajat where departament_id<>5;
+select count(*) from angajat where departament_id IS NULL;
+select * from angajat where departament_id != 5;
+
+-- 8. Listati angajatii care au salariu mai mare de 3000 lei
+select * from angajat where salariu>3000;
+
+-- 9. Selectati angajatii care au salariul 3000 lei
+select * from angajat where salariu=3000;
+
+-- 10. Selectați angajații care au salariul intre 3000 si 5000 de lei 
+select * from angajat where salariu between 3000 and 5000;
+select * from angajat where salariu > 3000 and salariu < 5000;
+
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM angajat join departament on angajat.departament_id=departament.id where departament.nume="HR";
+
+
+
